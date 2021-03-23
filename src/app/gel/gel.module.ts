@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ListadoComponent } from './pages/listado/listado.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { EquipoTarjetaComponent } from './components/equipo-tarjeta/equipo-tarjeta.component';
+import { ImagenPipe } from './pipes/imagen.pipe';
 
 
 
@@ -20,7 +21,8 @@ import { EquipoTarjetaComponent } from './components/equipo-tarjeta/equipo-tarje
     EquipoComponent,
     HomeComponent,
     ListadoComponent,
-    EquipoTarjetaComponent
+    EquipoTarjetaComponent,
+    ImagenPipe
   ],
   imports: [
     CommonModule,

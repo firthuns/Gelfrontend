@@ -5,7 +5,8 @@
     <h3>  Id:  {{ equipo.id}}</h3>
   </mat-card-header>
 
-  <img mat-card-image src="assets/{{equipo.ticketcompra}}.jpg ">
+<!--  <img mat-card-image src="assets/{{equipo.ticketcompra}}.jpg ">-->
+  <img mat-card-image [src] =" equipo | imagen ">
 
   <mat-card-content>
     <h3>Nombre equipo:   {{ equipo.equipo }}</h3>
