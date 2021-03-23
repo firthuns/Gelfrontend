@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/*Me coge to.do el espacio restante y me lo empuja hacia la derecha,
+ el boton con el icono de salir a la derecha de la pantalla */
+.spacer{
+  flex: 1 1 auto;
+}

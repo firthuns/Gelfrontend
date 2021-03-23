@@ -1,0 +1,80 @@
+<p>home works!</p>
+
+
+
+<mat-sidenav-container  fullscreen>
+
+  <!-- Menu flotante  -->
+  <mat-sidenav #sidenav mode="push">
+    <!-- color: primary -> morado -->
+    <mat-toolbar color="primary">
+      <span>Menú</span>
+      <mat-icon></mat-icon>
+
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <a routerLink="./listado"
+         mat-list-item
+         (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon >label</mat-icon>
+        <span>listado de equipos</span>
+      </a>
+
+      <a routerLink="./agregar"
+         mat-list-item
+         (click)="sidenav.toggle()">
+
+        <mat-icon mat-list-icon>add</mat-icon>
+        <span>Añadir equipo</span>
+      </a>
+      <a routerLink="./buscar"
+         mat-list-item
+         (click)="sidenav.toggle()" >
+
+        <mat-icon mat-list-icon>search</mat-icon>
+        <span>Búscar Equipo</span>
+      </a>
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <!-- FIN MENU FLOTANTE   -->
+  <!--  toolbar cuerpo principal pagina-->
+  <mat-toolbar>
+
+    <button mat-icon-button
+            (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <!-- Con un estilo global vamos a poner el boton en el lado derecho de la pantalla-->
+    <span class="spacer"></span>
+
+    <span> auth.usuario </span>
+    <span class="spacer"></span>
+    <button mat-raised-button
+            (click)="logOut()">
+      <mat-icon>logout</mat-icon>
+    </button>
+
+
+
+  </mat-toolbar>
+
+  <!-- FIN  toolbar cuerpo principal pagina-->
+  <!-- el estilo container, la vamos a definir dentro del home.component.ts-->
+  <div class="container">
+
+    <router-outlet></router-outlet>
+
+  </div>
+
+
+
+</mat-sidenav-container>

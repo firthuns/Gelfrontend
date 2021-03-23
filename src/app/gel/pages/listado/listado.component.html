@@ -1,0 +1,24 @@
+
+<h1>Listado de Equipos montados</h1>
+<mat-divider></mat-divider>
+<br>
+
+<!-- fxLayout="row wrap" -> reducimos el tamaño de las tarjeta y conforme está
+las colocamos todas dentro de una misma linea ; wrap reduce el numero de cards
+por lineas-->
+<div fxLayout="row wrap"
+     fxLayout.xs="column"
+     fxLayoutAlign="center"
+     fxLayoutGap="20px" >
+  <!-- fxFlex="20"-> indicamos que cada card tien un 20% del row  -->
+  <div  fxFlex="20"
+        fxFlex.lg="15"
+        fxFlex.sm="30"
+        *ngFor="let e of equipos">
+
+
+    <app-equipo-tarjeta [equipo]="e"></app-equipo-tarjeta>
+
+  </div>
+
+</div>

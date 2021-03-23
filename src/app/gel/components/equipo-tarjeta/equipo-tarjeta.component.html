@@ -1,0 +1,36 @@
+
+<mat-card >
+
+  <mat-card-header>
+    <h3>  Id:  {{ equipo.id}}</h3>
+  </mat-card-header>
+
+  <img mat-card-image src="assets/{{equipo.ticketcompra}}.jpg ">
+
+  <mat-card-content>
+    <h3>Nombre equipo:   {{ equipo.equipo }}</h3>
+  </mat-card-content>
+  <!-- Espacio reservado para botones -->
+  <mat-card-actions align="start">
+
+    <button mat-raised-button
+            color="warn"
+            [routerLink]="['/equipos', equipo.id]"   >
+      Leer más ...
+    </button>
+
+    <button mat-raised-button
+            color="info"
+            [routerLink]="['/equipos/editar', equipo.id]"   >
+      Editar ...
+    </button>
+
+  </mat-card-actions>
+  <!-- Espacio reservado para botones -->
+
+
+  <!--              <mat-card-footer>-->
+
+  <!--              </mat-card-footer>-->
+
+</mat-card>
