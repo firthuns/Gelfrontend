@@ -10,8 +10,9 @@ export class CargaImagenesService {
   // private db: baseDatos mysql
   constructor() { }
 
-  private guardarImage( imagen: any ){
+  private guardarImage ( imagen: { nombre: string, url: string } ){
 
+    // this.db.collection(`/${ this.CARPETA_IMAGENES}`).add( imagen);
 
 
   }
