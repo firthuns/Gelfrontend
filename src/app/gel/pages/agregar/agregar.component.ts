@@ -17,9 +17,10 @@ export class AgregarComponent implements OnInit {
 equipo: Equiposgel = {
   equipo:      '',
   modelo:      '',
+  lugarInstalacion: '',
   fechacompra:  '',
   ticketcompra: '' // http:// ... direccion .. .com/img.png
-}
+};
 
   constructor(private gelServicio: GelService,
               private activateRoute: ActivatedRoute,
@@ -37,8 +38,11 @@ equipo: Equiposgel = {
       .pipe(
         switchMap( ({id}) => this.gelServicio.getEquipoPorId( id ))
       )
-      .subscribe( resp => this.equipo = resp );
-    console.log( this.equipo);
+      .subscribe( resp => {
+        this.equipo = resp;
+        console.log( this.equipo);
+      });
+
     // como this.heroe esta asociado a los campos menidante el [ (ngModel)], se autorellenara
     // los campos
 

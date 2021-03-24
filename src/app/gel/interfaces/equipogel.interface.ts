@@ -2,6 +2,7 @@ export interface Equiposgel {
   id?:           string;
   equipo:       string;
   modelo:       string;
+  lugarInstalacion: string;
   fechacompra:  string;
   ticketcompra?: string; // http:// ... direccion .. .com/img.png
 }
