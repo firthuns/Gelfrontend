@@ -8,7 +8,7 @@ export class ImagenPipe implements PipeTransform {
 
   transform( equipo: Equiposgel): string {
 
-    console.log('Pipe imagen procesado', equipo);
+    // console.log('Pipe imagen procesado', equipo);
 
     // CONTROLANDO  LAS EXCEPTIONES
 

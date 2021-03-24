@@ -11,6 +11,7 @@ import { ListadoComponent } from './pages/listado/listado.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { EquipoTarjetaComponent } from './components/equipo-tarjeta/equipo-tarjeta.component';
 import { ImagenPipe } from './pipes/imagen.pipe';
+import {FormsModule} from '@angular/forms';
 
 
 
@@ -24,12 +25,13 @@ import { ImagenPipe } from './pipes/imagen.pipe';
     EquipoTarjetaComponent,
     ImagenPipe
   ],
-  imports: [
-    CommonModule,
-    FlexLayoutModule,
-    GelRoutingModule,
-    MaterialModule
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        GelRoutingModule,
+        MaterialModule,
+        FormsModule
 
-  ]
+    ]
 })
 export class GelModule { }
