@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-agregar',
   templateUrl: './agregar.component.html',
@@ -8,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgregarComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  guardar() {
+
+  }
+
+
+
+  borrarEquipo() {
+
+  }
+
+  cargaArchivo() {
+
+  }
+
+  limpiarArchivo() {
+
+  }
 }

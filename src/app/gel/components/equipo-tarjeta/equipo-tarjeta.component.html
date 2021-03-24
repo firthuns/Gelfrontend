@@ -12,16 +12,17 @@
     <h3>Nombre equipo:   {{ equipo.equipo }}</h3>
   </mat-card-content>
   <!-- Espacio reservado para botones -->
-  <mat-card-actions align="start">
+  <mat-card-actions align="start"
+                     fxLayout="row" >
 
     <button mat-raised-button
-            color="warn"
+            color="basic"
             [routerLink]="['/equipos', equipo.id]"   >
       Leer más ...
     </button>
 
     <button mat-raised-button
-            color="info"
+            color="primary"
             [routerLink]="['/equipos/editar', equipo.id]"   >
       Editar ...
     </button>

@@ -1,1 +1,171 @@
-<p>agregar works!</p>
+<h1>
+  <!--  <span *ngIf="heroe.id">Editar</span>-->
+  <!--  <span *ngIf="!heroe.id">Nuevo</span>-->
+<!--  {{  ( equipo.id ) ? 'Editar': 'Nuevo' }}-->
+ Equipo hidrogel
+<!--  <small> {{ heroe.superhero }}</small>-->
+</h1>
+
+
+<div fxLayout="row"
+     fxLayoutGap="40px"
+     fxLayout.xs="column">
+
+  <div fxFlex="50" fxLayout="column">
+    <!-- Primera linea del formulario
+      fxLayout.xs="column" -> para pantallas pequeñas-->
+    <div fxLayout="row"
+         fxLayout.xs="column"
+         fxLayoutGap="20px">
+
+      <mat-form-field fxFlex="100">
+        <mat-label>Equipo</mat-label>
+        <input matInput
+               type="text">
+<!--&lt;!&ndash;               [(ngModel)]="heroe.superhero"&ndash;&gt;-->
+<!--&lt;!&ndash;               required>&ndash;&gt;-->
+      </mat-form-field>
+
+      <mat-form-field fxFlex="100">
+        <mat-label>Modelo</mat-label>
+        <input matInput
+               type="text">
+<!--&lt;!&ndash;               [(ngModel)]="heroe.alter_ego"&ndash;&gt;-->
+<!--&lt;!&ndash;               required>&ndash;&gt;-->
+      </mat-form-field>
+    </div>
+
+    <mat-form-field >
+      <mat-label>Fecha compra</mat-label>
+      <input matInput
+             type="text">
+<!--&lt;!&ndash;             [(ngModel)]="heroe.first_appearance"&ndash;&gt;-->
+<!--&lt;!&ndash;             required>&ndash;&gt;-->
+    </mat-form-field>
+    <mat-form-field >
+      <mat-label>Lugar instalado</mat-label>
+      <input matInput
+             type="text">
+<!--&lt;!&ndash;             [(ngModel)]="heroe.characters"&ndash;&gt;-->
+<!--&lt;!&ndash;             required>&ndash;&gt;-->
+    </mat-form-field>
+
+<!--    <mat-form-field >-->
+<!--      <mat-label>Creador</mat-label>-->
+<!--&lt;!&ndash;      <mat-select  [(ngModel)]="heroe.publisher"&ndash;&gt;-->
+<!--&lt;!&ndash;                   required>&ndash;&gt;-->
+<!--&lt;!&ndash;        <mat-option *ngFor="let p of publisher"&ndash;&gt;-->
+<!--&lt;!&ndash;                    [value] ="p.id">&ndash;&gt;-->
+<!--&lt;!&ndash;          {{ p.desc}}&ndash;&gt;-->
+<!--&lt;!&ndash;        </mat-option>&ndash;&gt;-->
+<!--&lt;!&ndash;      </mat-select>&ndash;&gt;-->
+<!--    </mat-form-field>-->
+
+    <mat-form-field >
+      <mat-label>Foto Url</mat-label>
+      <input matInput
+             type="text">
+<!--&lt;!&ndash;             [(ngModel)]="heroe.alt_img"&ndash;&gt;-->
+<!--&lt;!&ndash;             required>&ndash;&gt;-->
+    </mat-form-field>
+    <br>
+
+    <div fxLayout="row">
+
+      <button mat-raised-button
+              color="primary"
+              (click)="guardar()"  >
+<!--        <mat-icon>edit</mat-icon>-->
+        <mat-icon>save</mat-icon>
+<!--        {{  ( heroe.id ) ? 'Actualizar': 'Crear' }}-->
+
+      </button>
+      <span class="spacer"></span>
+<!--      <button *ngIf="heroe.id"-->
+      <button
+              mat-raised-button
+              (click)="borrarEquipo( )"
+              color="warn">
+        <mat-icon>delete</mat-icon>
+
+      </button>
+
+    </div>
+
+  </div>
+
+<!--  En la siguiente columna se establecerá en ingreso de la imagen-->
+
+  <div fxLayout="row" fxFlex="50"  fxLayout.xs="column">
+<!--    <img [src]="equipo | imagen"  alt="{{ equipo.id }}">-->
+    <div fxFlex="45">
+      <h3>Seleccione archivos</h3>
+      <div class=" drop-zone file-over">
+        <h4>Deje Caer aquí el archivo</h4>
+        <img class="imagen-carga" src="/assets/drop-images.png" alt="">
+      </div>
+
+      <div  class=" mt-2 "  fxLayout="row">
+
+        <button class="ml-2"
+          mat-raised-button
+                color="primary"
+                (click)="cargaArchivo()"  >
+          <!--        <mat-icon>edit</mat-icon>-->
+          <mat-icon>file_upload</mat-icon>
+          <!--        {{  ( heroe.id ) ? 'Actualizar': 'Crear' }}-->
+
+        </button>
+        <span class=""> </span>
+        <!--      <button *ngIf="heroe.id"-->
+        <button
+          mat-raised-button
+          (click)="limpiarArchivo( )"
+          color="warn">
+          <mat-icon>delete</mat-icon>
+
+        </button>
+
+      </div>
+    </div>
+
+    <div fxFlex="55">
+        <h3>Carga de archivos</h3>
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Nombre archivo</th>
+          <th>tamaño</th>
+          <th>Progreso</th>
+        </tr>
+        </thead>
+        <tbody>
+<!--        *ngFor="let fichero of archivos"-->
+        <tr >
+          <td>
+<!--          <td [ngClass]="{ 'text-green': fichero.progreso>=100 }">-->
+<!--            {{ fichero.nombreArchivo}}-->
+            abc
+          </td>
+          <td>
+<!--            {{fichero.archivo.size / 1024/ 1024 | number: '.2-2'}} MB-->
+            05 MB
+          </td>
+          <td>
+            <div class="progress">
+<!--              fichero.progreso-->
+              <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': 25 + '%'}" ></div>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+
+      </table>
+
+
+  </div>
+  <!--  En la siguiente columna se establecerá en ingreso de la imagen-->
+
+</div>
+</div>

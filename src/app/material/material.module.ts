@@ -12,8 +12,11 @@ import {MatListModule} from '@angular/material/list';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
+
 
 
 @NgModule({
@@ -31,9 +34,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatSnackBarModule,
     MatSidenavModule,
     MatSelectModule,
+    MatTableModule,
+    MatToolbarModule,
     MatProgressSpinnerModule,
 
-    MatToolbarModule
+
   ]
 })
 export class MaterialModule { }

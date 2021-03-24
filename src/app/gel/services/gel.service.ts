@@ -16,7 +16,7 @@ export class GelService {
 
 
   public  getEquipos(): Observable<Equiposgel[]> {
-    return this.http.get<Equiposgel[]>( this.baseUrl);
+    return this.http.get<Equiposgel[]>( `${this.baseUrl}/equipos`);
   }
 
   /* vamos a realizar busqueda similares a nuestro termino, limitandolo
