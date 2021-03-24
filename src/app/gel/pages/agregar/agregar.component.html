@@ -71,13 +71,13 @@
       <button mat-raised-button
               color="primary"
               (click)="guardar()"  >
-<!--        <mat-icon>edit</mat-icon>-->
-        <mat-icon>save</mat-icon>
-<!--        {{  ( heroe.id ) ? 'Actualizar': 'Crear' }}-->
+
+        <mat-icon>{{  ( equipo.id ) ? 'edit': 'save' }}</mat-icon>
+<!--        -->
 
       </button>
       <span class="spacer"></span>
-<!--      <button *ngIf="heroe.id"-->
+
       <button
               mat-raised-button
               (click)="borrarEquipo( )"
@@ -92,80 +92,87 @@
 
 <!--  En la siguiente columna se establecerá en ingreso de la imagen-->
 
-  <div fxLayout="row" fxFlex="50"  fxLayout.xs="column">
-    <img [src]="equipo | imagen"  alt="{{ equipo.id }}">
-<!--    <div fxFlex="45" class="mat-" fxLayoutGap="50px">-->
-<!--      <h3>Seleccione archivos</h3>-->
-<!--      <div class=" drop-zone file-over">-->
-<!--        <h4>Deje Caer aquí el archivo</h4>-->
-<!--        <img class="imagen-carga" src="/assets/drop-images.png" alt="">-->
-<!--      </div>-->
+  <div fxLayout="row" fxFlex="50"  fxLayout.xs="column"
+     >
+   <div  *ngIf="equipo.id">
+     <img [src]="equipo | imagen"  alt="{{ equipo.id }}">
+   </div>
+
+    <div *ngIf="!equipo.id" >
+          <div fxFlex="45" class="mat-" fxLayoutGap="50px">
+            <h3>Seleccione archivos</h3>
+            <div class=" drop-zone file-over">
+              <h4>Deje Caer aquí el archivo</h4>
+              <img class="imagen-carga" src="/assets/drop-images.png" alt="">
+            </div>
 
 
 
-<!--        <div   fxLayout="row"  >-->
+              <div   fxLayout="row"  >
 
-<!--          <button-->
-<!--            mat-raised-button-->
-<!--            color="primary"-->
-<!--            (click)="cargaArchivo()"  >-->
-<!--            &lt;!&ndash;        <mat-icon>edit</mat-icon>&ndash;&gt;-->
-<!--            <mat-icon>file_upload</mat-icon>-->
-<!--            &lt;!&ndash;        {{  ( heroe.id ) ? 'Actualizar': 'Crear' }}&ndash;&gt;-->
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="cargaArchivo()"  >
+                  <!--        <mat-icon>edit</mat-icon>-->
+                  <mat-icon>file_upload</mat-icon>
+                  <!--        {{  ( heroe.id ) ? 'Actualizar': 'Crear' }}-->
 
-<!--          </button>-->
-<!--          <span class="spacer"> </span>-->
-<!--          &lt;!&ndash;      <button *ngIf="heroe.id"&ndash;&gt;-->
-<!--          <button-->
-<!--            mat-raised-button-->
-<!--            (click)="limpiarArchivo( )"-->
-<!--            color="warn">-->
-<!--            <mat-icon>delete</mat-icon>-->
+                </button>
+                <span class="spacer"> </span>
+                <!--      <button *ngIf="heroe.id"-->
+                <button
+                  mat-raised-button
+                  (click)="limpiarArchivo( )"
+                  color="warn">
+                  <mat-icon>delete</mat-icon>
 
-<!--          </button>-->
+                </button>
 
-<!--        </div>-->
-
-
-
-<!--    </div >-->
-
-<!--    <div  fxFlex="55">-->
-<!--        <h3>Carga de archivos</h3>-->
-
-<!--      <table class="table">-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--          <th>Nombre archivo</th>-->
-<!--          <th>tamaño</th>-->
-<!--          <th>Progreso</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--&lt;!&ndash;        *ngFor="let fichero of archivos"&ndash;&gt;-->
-<!--        <tr >-->
-<!--          <td>-->
-<!--&lt;!&ndash;          <td [ngClass]="{ 'text-green': fichero.progreso>=100 }">&ndash;&gt;-->
-<!--&lt;!&ndash;            {{ fichero.nombreArchivo}}&ndash;&gt;-->
-<!--            abc-->
-<!--          </td>-->
-<!--          <td>-->
-<!--&lt;!&ndash;            {{fichero.archivo.size / 1024/ 1024 | number: '.2-2'}} MB&ndash;&gt;-->
-<!--            05 MB-->
-<!--          </td>-->
-<!--          <td>-->
-<!--            <div class="progress">-->
-<!--&lt;!&ndash;              fichero.progreso&ndash;&gt;-->
-<!--              <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': 25 + '%'}" ></div>-->
-<!--            </div>-->
-<!--          </td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-
-<!--      </table>-->
+              </div>
 
 
-<!--  </div>-->
+
+          </div >
+
+          <div  fxFlex="55">
+              <h3>Carga de archivos</h3>
+
+            <table class="table">
+              <thead>
+              <tr>
+                <th>Nombre archivo</th>
+                <th>tamaño</th>
+                <th>Progreso</th>
+              </tr>
+              </thead>
+              <tbody>
+      <!--        *ngFor="let fichero of archivos"-->
+              <tr >
+                <td>
+      <!--          <td [ngClass]="{ 'text-green': fichero.progreso>=100 }">-->
+      <!--            {{ fichero.nombreArchivo}}-->
+                  abc
+                </td>
+                <td>
+      <!--            {{fichero.archivo.size / 1024/ 1024 | number: '.2-2'}} MB-->
+                  05 MB
+                </td>
+                <td>
+                  <div class="progress">
+      <!--              fichero.progreso-->
+                    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': 25 + '%'}" ></div>
+                  </div>
+                </td>
+              </tr>
+              </tbody>
+
+            </table>
+
+
+        </div>
+    </div>
+
   <!--  En la siguiente columna se establecerá en ingreso de la imagen-->
 
 </div>
