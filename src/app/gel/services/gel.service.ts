@@ -30,4 +30,19 @@ export class GelService {
     return this.http.get<Equiposgel>( `${ this.baseUrl}/equipos/${ id }`);
   }
 
+  agregarEquipo( equipo: Equiposgel): Observable<Equiposgel>{
+    return this.http.post<Equiposgel>(`${ this.baseUrl }/equipos`, equipo );
+  }
+
+  actualizarEquipo( equipo: Equiposgel): Observable<Equiposgel>{
+    return this.http.put<Equiposgel>(`${ this.baseUrl }/equipos/${equipo.id}`, equipo );
+  }
+
+  // de la funcicion nos devolverá un objeto vacion en el momento
+  // de haber efectuado el borrado del heroe
+  borrarEquipo( id: string ): Observable<any>{
+    return this.http.delete<any>(`${ this.baseUrl}/equipos/${ id }`);
+
+  }
+
 }

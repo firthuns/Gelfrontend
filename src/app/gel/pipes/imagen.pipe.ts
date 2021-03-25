@@ -12,7 +12,7 @@ export class ImagenPipe implements PipeTransform {
 
     // CONTROLANDO  LAS EXCEPTIONES
 
-    if (!equipo.ticketcompra){
+    if (!equipo.id && !equipo.ticketcompra){
       return `assets/drop-images.png`;
     }
     return `assets/${ equipo.ticketcompra }.jpg`;

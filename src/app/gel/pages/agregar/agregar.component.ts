@@ -3,6 +3,8 @@ import {Equiposgel} from '../../interfaces/equipogel.interface';
 import {GelService} from '../../services/gel.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {switchMap} from 'rxjs/operators';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog} from '@angular/material/dialog';
 
 
 
@@ -10,6 +12,12 @@ import {switchMap} from 'rxjs/operators';
   selector: 'app-agregar',
   templateUrl: './agregar.component.html',
   styles: [
+    `
+        img {
+          width: 100%;
+          border-radius:  25px;
+        }
+    `
   ]
 })
 export class AgregarComponent implements OnInit {
@@ -24,7 +32,9 @@ equipo: Equiposgel = {
 
   constructor(private gelServicio: GelService,
               private activateRoute: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              private snackBar: MatSnackBar,
+              private dialog: MatDialog  ) { }
 
   ngOnInit(): void {
   // console.log( this.router.url.includes('editar'));
@@ -40,15 +50,38 @@ equipo: Equiposgel = {
       )
       .subscribe( resp => {
         this.equipo = resp;
-        console.log( this.equipo);
+        // console.log( this.equipo);
       });
 
-    // como this.heroe esta asociado a los campos menidante el [ (ngModel)], se autorellenara
+    // como this.equipo esta asociado a los campos mediante el [ (ngModel)], se autorellenara
     // los campos
 
   }
 
   guardar() {
+
+    if ( this.equipo.equipo.trim().length === 0||
+         this.equipo.modelo.trim().length === 0 ||
+         this.equipo.fechacompra.trim().length === 0 ||
+         this.equipo.lugarInstalacion.trim().length === 0 ){
+      // añadir un mesaje emergente para indicar que rellene todos los campos
+      this.mostrarSnabar('Rellena todos los campos');
+      return;   }
+      // console.log( this.equipo);
+
+      if ( this.equipo.id){
+        // actualizamos valores
+         this.gelServicio.actualizarEquipo( this.equipo)
+           .subscribe( resp => this.mostrarSnabar('Registro actualizado'));
+      }else {
+        // creamos un nuevo registro
+      this.gelServicio.agregarEquipo( this.equipo)
+        .subscribe( resp => {
+          console.log( 'respuesta', resp );
+          this.router.navigate( ['/equipos/editar', resp.id]);
+          this.mostrarSnabar('Registro creado');
+        });
+      }
 
   }
 
@@ -64,5 +97,12 @@ equipo: Equiposgel = {
 
   limpiarArchivo() {
 
+  }
+
+  private mostrarSnabar( mensaje: string) {
+    // this.snackBar.open( mensaje, 'ok!', {
+    this.snackBar.open( mensaje, 'Aceptar' , {
+      duration: 1000
+    });
   }
 }
