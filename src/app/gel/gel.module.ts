@@ -12,6 +12,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { EquipoTarjetaComponent } from './components/equipo-tarjeta/equipo-tarjeta.component';
 import { ImagenPipe } from './pipes/imagen.pipe';
 import {FormsModule} from '@angular/forms';
+import { ConfirmarBorrarComponent } from './components/confirmar-borrar/confirmar-borrar.component';
 
 
 
@@ -23,7 +24,8 @@ import {FormsModule} from '@angular/forms';
     HomeComponent,
     ListadoComponent,
     EquipoTarjetaComponent,
-    ImagenPipe
+    ImagenPipe,
+    ConfirmarBorrarComponent
   ],
     imports: [
         CommonModule,

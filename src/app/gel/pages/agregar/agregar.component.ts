@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {switchMap} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
+import {ConfirmarBorrarComponent} from '../../components/confirmar-borrar/confirmar-borrar.component';
 
 
 
@@ -72,7 +73,11 @@ equipo: Equiposgel = {
       if ( this.equipo.id){
         // actualizamos valores
          this.gelServicio.actualizarEquipo( this.equipo)
-           .subscribe( resp => this.mostrarSnabar('Registro actualizado'));
+           .subscribe( resp => {
+
+             this.mostrarSnabar('Registro actualizado');
+             this.router.navigate( ['/equipos']);
+           });
       }else {
         // creamos un nuevo registro
       this.gelServicio.agregarEquipo( this.equipo)
@@ -88,23 +93,41 @@ equipo: Equiposgel = {
 
 
   borrarEquipo(): void {
-      this.gelServicio.borrarEquipo(  this.equipo.id! )
-        .subscribe( resp => {
-          this.router.navigate( ['/equipos']);
-        });
+
+    const dialog = this.dialog.open( ConfirmarBorrarComponent, {
+      width: '350px',
+      data: this.equipo
+    });
+
+    dialog.afterClosed().subscribe(
+      ( result ) => {
+        console.log( result );
+
+        if ( result ){
+          this.gelServicio.borrarEquipo(  this.equipo.id! )
+            .subscribe( resp => {
+              this.mostrarSnabar('Registro eliminado') ;
+              this.router.navigate( ['/equipos']);
+            });
+        } else  this.router.navigate( ['/equipos']);
+      }
+    );
+
+
+
   }
 
-  cargaArchivo() {
+  cargaArchivo():void {
 
   }
 
-  limpiarArchivo() {
+  limpiarArchivo(): void {
 
   }
 
-  private mostrarSnabar( mensaje: string) {
+  private mostrarSnabar( mensaje: string): void {
     // this.snackBar.open( mensaje, 'ok!', {
-    this.snackBar.open( mensaje, 'Aceptar' , {
+    this.snackBar.open( mensaje, 'Ok!' , {
       duration: 1000
     });
   }
