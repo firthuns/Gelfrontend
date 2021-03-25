@@ -39,9 +39,9 @@ equipo: Equiposgel = {
   ngOnInit(): void {
   // console.log( this.router.url.includes('editar'));
 
-    // if ( this.equipo.equipo.trim().length === 0){
-    //     return;
-    // }
+    if ( !this.router.url.includes('editar')){
+        return;
+    }
 
     // desestructuracion ({ id })
     this.activateRoute.params
@@ -58,7 +58,7 @@ equipo: Equiposgel = {
 
   }
 
-  guardar() {
+  guardar(): void {
 
     if ( this.equipo.equipo.trim().length === 0||
          this.equipo.modelo.trim().length === 0 ||
@@ -87,8 +87,11 @@ equipo: Equiposgel = {
 
 
 
-  borrarEquipo() {
-
+  borrarEquipo(): void {
+      this.gelServicio.borrarEquipo(  this.equipo.id! )
+        .subscribe( resp => {
+          this.router.navigate( ['/equipos']);
+        });
   }
 
   cargaArchivo() {
