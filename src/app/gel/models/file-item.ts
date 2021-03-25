@@ -8,10 +8,10 @@ export class FileItem{
   public estaSubiendo: boolean; // bandera que me advertira de si esta subiendo una imagen
   public  progreso: number;
 
-  constructor( archiv: File) {
+  constructor( archivo: File) {
 
-    this.archivo = archiv;
-    this.nombreArchivo = archiv.name;
+    this.archivo = archivo;
+    this.nombreArchivo = archivo.name;
     this.url = '';
     this.estaSubiendo = false;
     this.progreso = 0;

@@ -108,7 +108,7 @@ en nuestro caso sera un imagen, 'drop'-->
             <h3>Seleccione archivos</h3>
 
             <div appNgDropFiles
-
+                    [archivos]="archivos"
                    (mouseSobre) ="estaSobreElemento = $event"
                    [ngClass]="{'file-over': estaSobreElemento }"
                   class="drop-zone file-over">
@@ -158,21 +158,21 @@ en nuestro caso sera un imagen, 'drop'-->
               </tr>
               </thead>
               <tbody>
-      <!--        *ngFor="let fichero of archivos"-->
-              <tr >
-                <td>
-      <!--          <td [ngClass]="{ 'text-green': fichero.progreso>=100 }">-->
-      <!--            {{ fichero.nombreArchivo}}-->
-                  abc
+
+              <tr *ngFor="let fichero of archivos">
+
+                <td [ngClass]="{ 'text-green': fichero.progreso>=100 }">
+                  {{ fichero.nombreArchivo}}
+
                 </td>
                 <td>
-      <!--            {{fichero.archivo.size / 1024/ 1024 | number: '.2-2'}} MB-->
-                  05 MB
+                  {{fichero.archivo.size / 1024/ 1024 | number: '.2-2'}} MB
+
                 </td>
                 <td>
                   <div class="progress">
-      <!--              fichero.progreso-->
-                    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': 25 + '%'}" ></div>
+
+                    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width':  fichero.progreso + '%'}" ></div>
                   </div>
                 </td>
               </tr>
