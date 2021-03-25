@@ -1,1 +1,49 @@
-<p>equipo works!</p>
+
+
+<mat-grid-list cols="1" *ngIf="!equipo; else divEquipo">
+
+  <mat-grid-tile>
+    <mat-spinner>
+
+    </mat-spinner>
+  </mat-grid-tile>
+
+</mat-grid-list>
+
+
+<ng-template #divEquipo>
+  <div fxLayout="row"
+       fxLayout.xs="column"
+       fxLayoutGap="30px" >
+
+    <div fxFlex="50">
+      <h1>{{ equipo.id}} <small> {{equipo.equipo}}</small></h1>
+      <mat-divider></mat-divider>
+      <br>
+      <img [src]="equipo | imagen">
+
+    </div>
+
+    <div fxFlex="50">
+      <h3> ID equipo: {{ equipo.id }}</h3>
+      <mat-divider></mat-divider>
+      <br>
+      <mat-list>
+        <mat-list-item>Nombre:            {{ equipo.equipo}}</mat-list-item>
+        <mat-list-item>Modelo:            {{ equipo.modelo}}</mat-list-item>
+        <mat-list-item>Fecha compra:      {{ equipo.fechacompra}}</mat-list-item>
+        <mat-list-item>Lugar instalación: {{ equipo.lugarInstalacion}}</mat-list-item>
+      </mat-list>
+
+      <br>
+
+      <button mat-flat-button
+              color="primary"
+              (click)="regresar()" >
+        Regresar
+      </button>
+
+    </div>
+
+  </div>
+</ng-template>
