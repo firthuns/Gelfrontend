@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {Equiposgel} from '../../interfaces/equipogel.interface';
-import {GelService} from '../../services/gel.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {switchMap} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {MatDialog} from '@angular/material/dialog';
+
+import {Equiposgel} from '../../interfaces/equipogel.interface';
+import {GelService} from '../../services/gel.service';
 import {ConfirmarBorrarComponent} from '../../components/confirmar-borrar/confirmar-borrar.component';
+import {FileItem} from '../../models/file-item';
+import {CargaImagenesService} from '../../services/carga-imagenes.service';
 
 
 
@@ -23,7 +26,13 @@ import {ConfirmarBorrarComponent} from '../../components/confirmar-borrar/confir
 })
 export class AgregarComponent implements OnInit {
 
-equipo: Equiposgel = {
+  // crearemos una bandera q nos identifique cuando el mouse este sobre la zona
+  estaSobreElemento = false  ;
+  archivos: FileItem[] = [];
+
+
+
+  equipo: Equiposgel = {
   equipo:      '',
   modelo:      '',
   lugarInstalacion: '',
@@ -33,6 +42,7 @@ equipo: Equiposgel = {
 
   constructor(private gelServicio: GelService,
               private activateRoute: ActivatedRoute,
+              private cargaImagenes: CargaImagenesService,
               private router: Router,
               private snackBar: MatSnackBar,
               private dialog: MatDialog  ) { }
@@ -61,7 +71,7 @@ equipo: Equiposgel = {
 
   guardar(): void {
 
-    if ( this.equipo.equipo.trim().length === 0||
+    if ( this.equipo.equipo.trim().length === 0 ||
          this.equipo.modelo.trim().length === 0 ||
          this.equipo.fechacompra.trim().length === 0 ||
          this.equipo.lugarInstalacion.trim().length === 0 ){
@@ -70,7 +80,7 @@ equipo: Equiposgel = {
       return;   }
       // console.log( this.equipo);
 
-      if ( this.equipo.id){
+    if ( this.equipo.id){
         // actualizamos valores
          this.gelServicio.actualizarEquipo( this.equipo)
            .subscribe( resp => {
@@ -82,8 +92,8 @@ equipo: Equiposgel = {
         // creamos un nuevo registro
       this.gelServicio.agregarEquipo( this.equipo)
         .subscribe( resp => {
-          console.log( 'respuesta', resp );
-          this.router.navigate( ['/equipos/editar', resp.id]);
+          // console.log( 'respuesta', resp );
+          this.router.navigate( ['/equipos']);
           this.mostrarSnabar('Registro creado');
         });
       }
@@ -104,24 +114,17 @@ equipo: Equiposgel = {
         console.log( result );
 
         if ( result ){
+          // tslint:disable-next-line:no-non-null-assertion
           this.gelServicio.borrarEquipo(  this.equipo.id! )
             .subscribe( resp => {
               this.mostrarSnabar('Registro eliminado') ;
               this.router.navigate( ['/equipos']);
             });
-        } else  this.router.navigate( ['/equipos']);
+        } else {  this.router.navigate( ['/equipos']); }
       }
     );
 
 
-
-  }
-
-  cargaArchivo():void {
-
-  }
-
-  limpiarArchivo(): void {
 
   }
 
@@ -131,4 +134,30 @@ equipo: Equiposgel = {
       duration: 1000
     });
   }
+
+
+// funciones para controlar la carga de imagenes
+
+  cargaArchivo():void {
+      this.cargaImagenes.cargarImagenBaseDatos( this.archivos );
+  }
+
+  // tslint:disable-next-line:typedef
+  pruebaSobreElemento( event: any ) {
+    console.log(event );
+
+  }
+
+  limpiarArchivo(): void {
+    this.archivos = [ ];
+    console.log('Arraylist vacío: ' + this.archivos.length);
+  }
+
+
+
+
+
+
+
+
 }

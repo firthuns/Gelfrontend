@@ -90,7 +90,9 @@
 
   </div>
 
-<!--  En la siguiente columna se establecerá en ingreso de la imagen-->
+<!--  En la siguiente columna se establecerá en ingreso de la imagen,
+para ello obligaremos al usuario que arrestre su imagen sobre el
+recuadro 'drop'-->
 
   <div fxLayout="row" fxFlex="50"  fxLayout.xs="column"
      >
@@ -98,10 +100,19 @@
      <img [src]="equipo | imagen"  alt="{{ equipo.id }}">
    </div>
 
+<!--    En el siguiente div controlaremos carga  de los archivos,
+en nuestro caso sera un imagen, 'drop'-->
     <div *ngIf="!equipo.id" >
+
           <div fxFlex="45" class="mat-" fxLayoutGap="50px">
             <h3>Seleccione archivos</h3>
-            <div class=" drop-zone file-over">
+
+            <div appNgDropFiles
+
+                   (mouseSobre) ="estaSobreElemento = $event"
+                   [ngClass]="{'file-over': estaSobreElemento }"
+                  class="drop-zone file-over">
+
               <h4>Deje Caer aquí el archivo</h4>
               <img class="imagen-carga" src="/assets/drop-images.png" alt="">
             </div>
@@ -113,10 +124,10 @@
                 <button
                   mat-raised-button
                   color="primary"
-                  (click)="cargaArchivo()"  >
+                  (click)="cargaArchivo()" [disabled]="archivos.length === 0" >
                   <!--        <mat-icon>edit</mat-icon>-->
                   <mat-icon>file_upload</mat-icon>
-                  <!--        {{  ( heroe.id ) ? 'Actualizar': 'Crear' }}-->
+                  <!--        {{  ( equipo.id ) ? 'Actualizar': 'Crear' }}-->
 
                 </button>
                 <span class="spacer"> </span>
@@ -172,6 +183,8 @@
 
         </div>
     </div>
+    <!--    En el siguiente div controlaremos carga  de los archivos,
+        en nuestro caso sera un imagen, 'drop'-->
 
   <!--  En la siguiente columna se establecerá en ingreso de la imagen-->
 
