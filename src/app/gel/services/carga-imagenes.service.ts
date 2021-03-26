@@ -14,7 +14,7 @@ export class CargaImagenesService {
   private guardarImage ( imagen: { nombre: string, url: string } ){
 
     // this.db.collection(`/${ this.CARPETA_IMAGENES}`).add( imagen);
-
+// codificar a base 64
 
   }
 

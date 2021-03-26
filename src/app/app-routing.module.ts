@@ -15,10 +15,10 @@ const routes: Routes = [
     path: 'equipos',
     loadChildren: () => import('./gel/gel.module').then( m => m.GelModule),
   },
-  {
-    path: 'hidrogel',
-    component: HidrogelPageComponent
-  },
+{
+  path: 'hidrogel',
+  component: HidrogelPageComponent
+},
   {
     path: '**',
     redirectTo: 'hidrogel'
@@ -30,3 +30,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+

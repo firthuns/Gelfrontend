@@ -52,9 +52,9 @@
 
 <!--    <mat-form-field >-->
 <!--      <mat-label>Creador</mat-label>-->
-<!--      <mat-select  [(ngModel)]="heroe.publisher"-->
+<!--      <mat-select  [(ngModel)]=""-->
 <!--                   required>-->
-<!--        <mat-option *ngFor="let p of publisher"-->
+<!--        <mat-option *ngFor="let p of "-->
 <!--                    [value] ="p.id">-->
 <!--          {{ p.desc}}-->
 <!--        </mat-option>-->
@@ -118,7 +118,7 @@ en nuestro caso sera un imagen, 'drop'-->
             </div>
 
 
-
+<!-- Linea botones controla zona drop-->
               <div   fxLayout="row"  >
 
                 <button
@@ -131,7 +131,7 @@ en nuestro caso sera un imagen, 'drop'-->
 
                 </button>
                 <span class="spacer"> </span>
-                <!--      <button *ngIf="heroe.id"-->
+
                 <button
                   mat-raised-button
                   (click)="limpiarArchivo( )"
@@ -141,11 +141,11 @@ en nuestro caso sera un imagen, 'drop'-->
                 </button>
 
               </div>
-
+            <!-- Fin Linea botones controla zona drop-->
 
 
           </div >
-
+<!-- Tabla donde se verá  la carga de archivo -->
           <div  fxFlex="55">
               <h3>Carga de archivos</h3>
 
@@ -161,7 +161,7 @@ en nuestro caso sera un imagen, 'drop'-->
 
               <tr *ngFor="let fichero of archivos">
 
-                <td [ngClass]="{ 'text-green': fichero.progreso>=100 }">
+                <td  [ngClass]="{ 'text-green': fichero.progreso>=100 }">
                   {{ fichero.nombreArchivo}}
 
                 </td>
@@ -182,11 +182,11 @@ en nuestro caso sera un imagen, 'drop'-->
 
 
         </div>
-    </div>
-    <!--    En el siguiente div controlaremos carga  de los archivos,
-        en nuestro caso sera un imagen, 'drop'-->
 
-  <!--  En la siguiente columna se establecerá en ingreso de la imagen-->
+
+      <!-- Fnm Tabla donde se verá  la carga de archivo -->
+    </div>
+
 
 </div>
 
