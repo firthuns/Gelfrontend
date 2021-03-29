@@ -55,4 +55,9 @@ export class AuthService {
   }
 
   /*el operador tap, se ejecutara ante del subscribe en el parte del login.ts*/
+
+  logout() {
+    localStorage.clear();
+  }
+
 }

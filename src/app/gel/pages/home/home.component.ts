@@ -26,7 +26,8 @@ export class HomeComponent  implements OnInit{
 
   logOut() {
     // ir al backend y verificar que el usuario existe
-    this.router.navigate( ['./hidrogel']);
+    this.authservice.logout();
+    this.router.navigate( ['./auth/login']);
     // this.router.navigateByUrl('/auth'):
   }
 
