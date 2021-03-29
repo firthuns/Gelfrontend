@@ -9,9 +9,10 @@
 
 <div fxLayout="row"
      fxLayoutGap="40px"
-     fxLayout.xs="column">
+     fxLayout.xs="column"
+   >
 
-  <div class="form" fxFlex="50" fxLayout="column">
+  <div    class="form" fxFlex="50" fxLayout="column">
     <!-- Primera linea del formulario
       fxLayout.xs="column" -> para pantallas pequeñas-->
     <div fxLayout="row"
@@ -42,6 +43,7 @@
              [(ngModel)]="equipo.fechacompra"
              required>
     </mat-form-field>
+
     <mat-form-field >
       <mat-label>Lugar instalado</mat-label>
       <input matInput
@@ -50,20 +52,19 @@
              required>
     </mat-form-field>
 
-<!--    <mat-form-field >-->
-<!--      <mat-label>Creador</mat-label>-->
-<!--      <mat-select  [(ngModel)]=""-->
-<!--                   required>-->
-<!--        <mat-option *ngFor="let p of "-->
-<!--                    [value] ="p.id">-->
-<!--          {{ p.desc}}-->
-<!--        </mat-option>-->
-<!--      </mat-select>-->
-<!--    </mat-form-field>-->
+    <mat-form-field >
+      <mat-label>Ruta nombre imagen</mat-label>
+      <input matInput
+             type="text"
 
-<!--    <div fxFlex="50">-->
-<!--      <img [src]="equipo | imagen"  alt="{{ equipo.id }}">-->
-<!--    </div>-->
+             [(ngModel)]="equipo.ticketcompra"
+             disabled
+             required>
+
+
+    </mat-form-field>
+
+
     <br>
 
     <div fxLayout="row">
@@ -81,10 +82,10 @@
       <button
               mat-raised-button
               (click)="borrarEquipo( )"
-              [disabled]="equipo.valueOf() === 0"
+              [disabled]="!equipo.id"
               color="warn">
         <mat-icon>delete</mat-icon>
-
+a
       </button>
 
     </div>
@@ -95,8 +96,8 @@
 para ello obligaremos al usuario que arrestre su imagen sobre el
 recuadro 'drop'-->
 
-  <div fxLayout="row" fxFlex="50"  fxLayout.xs="column"
-     >
+  <div fxLayout="row" fxFlex="50"  fxLayout.xs="column"    >
+
    <div  *ngIf="equipo.id">
      <img [src]="equipo | imagen"  alt="{{ equipo.id }}">
    </div>
@@ -104,45 +105,25 @@ recuadro 'drop'-->
 <!--    En el siguiente div controlaremos carga  de los archivos,
 en nuestro caso sera un imagen, 'drop'-->
     <div *ngIf="!equipo.id" >
-
+      <div   fxLayout="row"  >
           <div fxFlex="45" class="mat-" fxLayoutGap="50px">
             <h3>Seleccione archivos</h3>
 
             <div appNgDropFiles
+                 *ngIf="archivos.length !== 1"
                     [archivos]="archivos"
                    (mouseSobre) ="estaSobreElemento = $event"
                    [ngClass]="{'file-over': estaSobreElemento }"
                   class="drop-zone file-over">
 
+
               <h4>Deje Caer aquí el archivo</h4>
               <img class="imagen-carga" src="/assets/drop-images.png" alt="">
+
             </div>
+            <h1 *ngIf="archivos.length === 1"> archivo cargado correctamente !!!</h1>
 
 
-<!-- Linea botones controla zona drop-->
-              <div   fxLayout="row"  >
-
-                <button
-                  mat-raised-button
-                  color="primary"
-                  (click)="cargaArchivo()" [disabled]="archivos.length === 0" >
-                  <!--        <mat-icon>edit</mat-icon>-->
-                  <mat-icon>file_upload</mat-icon>
-                  <!--        {{  ( equipo.id ) ? 'Actualizar': 'Crear' }}-->
-
-                </button>
-                <span class="spacer"> </span>
-
-                <button
-                  mat-raised-button
-                  (click)="limpiarArchivo( )"
-                  color="warn">
-                  <mat-icon>delete</mat-icon>
-
-                </button>
-
-              </div>
-            <!-- Fin Linea botones controla zona drop-->
 
 
           </div >
@@ -163,6 +144,8 @@ en nuestro caso sera un imagen, 'drop'-->
               <tr *ngFor="let fichero of archivos">
 
                 <td  [ngClass]="{ 'text-green': fichero.progreso>=100 }">
+<!--                  [(ngModel)]="equipo.ticketcompra">-->
+
                   {{ fichero.nombreArchivo}}
 
                 </td>
@@ -183,12 +166,38 @@ en nuestro caso sera un imagen, 'drop'-->
 
 
         </div>
-
-
+      </div>
       <!-- Fnm Tabla donde se verá  la carga de archivo -->
+
+      <!-- Linea botones controla zona drop-->
+      <div   fxLayout="row"  >
+
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="cargaArchivo()" [disabled]="archivos.length === 0" >
+          <!--        <mat-icon>edit</mat-icon>-->
+          <mat-icon>file_upload</mat-icon>
+
+
+        </button>
+        <span class="spacer"> </span>
+
+        <button
+          mat-raised-button
+          (click)="limpiarArchivo( )"
+          color="warn">
+          <mat-icon>cleaning_services</mat-icon>
+
+        </button>
+
+      </div>
+      <!-- Fin Linea botones controla zona drop-->
     </div>
 
 
 </div>
+
+
 
 </div>

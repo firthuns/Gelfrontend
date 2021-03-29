@@ -11,7 +11,7 @@ import { ListadoComponent } from './pages/listado/listado.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { EquipoTarjetaComponent } from './components/equipo-tarjeta/equipo-tarjeta.component';
 import { ImagenPipe } from './pipes/imagen.pipe';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ConfirmarBorrarComponent } from './components/confirmar-borrar/confirmar-borrar.component';
 import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
 
@@ -29,13 +29,14 @@ import { NgDropFilesDirective } from './directives/ng-drop-files.directive';
     ConfirmarBorrarComponent,
     NgDropFilesDirective
   ],
-    imports: [
-        CommonModule,
-        FlexLayoutModule,
-        GelRoutingModule,
-        MaterialModule,
-        FormsModule
+  imports: [
+    CommonModule,
+    FlexLayoutModule,
+    GelRoutingModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
 
-    ]
+  ]
 })
 export class GelModule { }
