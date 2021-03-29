@@ -11,7 +11,7 @@
      fxLayoutGap="40px"
      fxLayout.xs="column">
 
-  <div fxFlex="50" fxLayout="column">
+  <div class="form" fxFlex="50" fxLayout="column">
     <!-- Primera linea del formulario
       fxLayout.xs="column" -> para pantallas pequeñas-->
     <div fxLayout="row"
@@ -81,6 +81,7 @@
       <button
               mat-raised-button
               (click)="borrarEquipo( )"
+              [disabled]="equipo.valueOf() === 0"
               color="warn">
         <mat-icon>delete</mat-icon>
 

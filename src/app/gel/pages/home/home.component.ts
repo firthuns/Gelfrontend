@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {AuthService} from '../../../auth/services/auth.service';
+import {AuthResponse} from '../../../auth/interfaces/interfaces';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,17 @@ import {Router} from '@angular/router';
   styles: [
   ]
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent  implements OnInit{
 
-  constructor( private  router: Router) { }
+
+
+  get auth(){
+    return this.authservice.auth;
+  }
+
+
+  constructor( private  router: Router,
+               private authservice: AuthService) { }
 
   ngOnInit(): void {
   }
@@ -17,5 +27,8 @@ export class HomeComponent implements OnInit {
   logOut() {
     // ir al backend y verificar que el usuario existe
     this.router.navigate( ['./hidrogel']);
+    // this.router.navigateByUrl('/auth'):
   }
+
+
 }

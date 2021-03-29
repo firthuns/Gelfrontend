@@ -1,6 +1,17 @@
 
 
 
+
+<!--<mat-grid-list cols="1">-->
+<!--  <mat-grid-tile>-->
+<!--    <button mat-raised-button color="primary"-->
+<!--            (click)="login()">-->
+<!--      Ingresar-->
+<!--    </button>-->
+<!--  </mat-grid-tile>-->
+<!--</mat-grid-list>-->
+
+
 <form class="login100-form"
       autocomplete="off"
       [formGroup]="miFormulario"
@@ -35,7 +46,8 @@
       <div class="login100-form-bgbtn"></div>
       <button class="login100-form-btn"
               type="submit"
-              [disabled]="miFormulario.invalid">
+              (click)="login()">
+<!--              [disabled]="miFormulario.invalid">-->
         Login
       </button>
     </div>
