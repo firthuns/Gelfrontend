@@ -7,12 +7,12 @@
 </h1>
 
 
-<div fxLayout="row"
+<div  class="form"
+      fxLayout="row"
      fxLayoutGap="40px"
-     fxLayout.xs="column"
-   >
+     fxLayout.xs="column"  >
 
-  <div    class="form" fxFlex="50" fxLayout="column">
+  <div    fxFlex="50" fxLayout="column">
     <!-- Primera linea del formulario
       fxLayout.xs="column" -> para pantallas pequeñas-->
     <div fxLayout="row"
@@ -53,20 +53,18 @@
     </mat-form-field>
 
     <mat-form-field >
-      <mat-label>Ruta nombre imagen</mat-label>
+      <mat-label>Url imagen</mat-label>
       <input matInput
-             type="text"
-
+             type="url"
              [(ngModel)]="equipo.ticketcompra"
              disabled
              required>
-
 
     </mat-form-field>
 
 
     <br>
-
+<!-- Botones  guardar/ eliminar  formulario -->
     <div fxLayout="row">
 
       <button mat-raised-button
@@ -85,11 +83,11 @@
               [disabled]="!equipo.id"
               color="warn">
         <mat-icon>delete</mat-icon>
-a
+          a
       </button>
 
     </div>
-
+    <!-- FIN Botones  guardar/ eliminar  formulario -->
   </div>
 
 <!--  En la siguiente columna se establecerá en ingreso de la imagen,
@@ -98,15 +96,16 @@ recuadro 'drop'-->
 
   <div fxLayout="row" fxFlex="50"  fxLayout.xs="column"    >
 
+<!--    lA IMAGEN SE MOSTRARÁ CUANDO SE ACCEDA MEDIANTE BOTON DE EDITAR -->
    <div  *ngIf="equipo.id">
      <img [src]="equipo | imagen"  alt="{{ equipo.id }}">
    </div>
-
+    <!-- FIN   lA IMAGEN SE MOSTRARÁ CUANDO SE ACCEDA MEDIANTE BOTON DE EDITAR -->
 <!--    En el siguiente div controlaremos carga  de los archivos,
 en nuestro caso sera un imagen, 'drop'-->
     <div *ngIf="!equipo.id" >
-      <div   fxLayout="row"  >
-          <div fxFlex="45" class="mat-" fxLayoutGap="50px">
+      <div   fxLayout="row" fxLayoutGap="20px"  >
+          <div  fxLayout="column" fxLayoutGap="20px">
             <h3>Seleccione archivos</h3>
 
             <div appNgDropFiles
@@ -121,56 +120,59 @@ en nuestro caso sera un imagen, 'drop'-->
               <img class="imagen-carga" src="/assets/drop-images.png" alt="">
 
             </div>
-            <h1 *ngIf="archivos.length === 1"> archivo cargado correctamente !!!</h1>
-
-
+            <div  *ngIf="archivos.length === 1">
+            <h1> archivo cargado correctamente !!!</h1>
+            <img class="imagen-carga" src="" alt="">
+            </div>
 
 
           </div >
-<!-- Tabla donde se verá  la carga de archivo -->
-          <div  fxFlex="55">
-              <h3>Carga de archivos</h3>
+     <!-- Tabla donde se verá  la carga de archivo -->
+<!--          <div  fxFlex="55">-->
+<!--              <h3>Carga de archivos</h3>-->
 
-            <table class="table">
-              <thead>
-              <tr>
-                <th>Nombre archivo</th>
-                <th>tamaño</th>
-                <th>Progreso</th>
-              </tr>
-              </thead>
-              <tbody>
+<!--            <table class="table">-->
+<!--              <thead>-->
+<!--              <tr>-->
+<!--                <th>Nombre archivo</th>-->
+<!--                <th>tamaño</th>-->
+<!--                <th>Progreso</th>-->
+<!--              </tr>-->
+<!--              </thead>-->
+<!--              <tbody>-->
 
-              <tr *ngFor="let fichero of archivos">
+<!--              <tr *ngFor="let fichero of archivos">-->
 
-                <td  [ngClass]="{ 'text-green': fichero.progreso>=100 }">
-<!--                  [(ngModel)]="equipo.ticketcompra">-->
+<!--                <td  [ngClass]="{ 'text-green': fichero.progreso>=100 }">-->
+<!--&lt;!&ndash;                  [(ngModel)]="equipo.ticketcompra">&ndash;&gt;-->
 
-                  {{ fichero.nombreArchivo}}
+<!--                  {{ fichero.nombreArchivo}}-->
 
-                </td>
-                <td>
-                  {{fichero.archivo.size / 1024/ 1024 | number: '.2-2'}} MB
+<!--                </td>-->
+<!--                <td>-->
+<!--                  {{fichero.archivo.size / 1024/ 1024 | number: '.2-2'}} MB-->
 
-                </td>
-                <td>
-                  <div class="progress">
+<!--                </td>-->
+<!--                <td>-->
+<!--                  <div class="progress">-->
 
-                    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width':  fichero.progreso + '%'}" ></div>
-                  </div>
-                </td>
-              </tr>
-              </tbody>
+<!--                    <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width':  fichero.progreso + '%'}" ></div>-->
+<!--                  </div>-->
+<!--                </td>-->
+<!--              </tr>-->
+<!--              </tbody>-->
 
-            </table>
+<!--            </table>-->
 
 
-        </div>
+<!--        </div>-->
       </div>
       <!-- Fnm Tabla donde se verá  la carga de archivo -->
 
       <!-- Linea botones controla zona drop-->
-      <div   fxLayout="row"  >
+<!--      fxLayout="row" fxLayoutGap="20px"  estas dos propiedades hacen que tengn sus elementos
+ una separacion entre si de 20px -->
+      <div   fxLayout="row" fxLayoutGap="20px" >
 
         <button
           mat-raised-button
@@ -181,7 +183,7 @@ en nuestro caso sera un imagen, 'drop'-->
 
 
         </button>
-        <span class="spacer"> </span>
+<!--        <span class="spacer"> </span>-->
 
         <button
           mat-raised-button

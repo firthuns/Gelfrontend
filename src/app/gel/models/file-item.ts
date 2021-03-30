@@ -1,6 +1,6 @@
 
 
-export class FileItem{
+export class FileItem implements Equiposgel {
 
   public archivo: File;
   public nombreArchivo: string;

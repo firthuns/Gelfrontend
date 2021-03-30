@@ -28,7 +28,7 @@ export class AgregarComponent implements OnInit {
 
   // crearemos una bandera q nos identifique cuando el mouse este sobre la zona
   estaSobreElemento = false  ;
-  archivos: FileItem[] = [];
+  archivos: FileItem[] = [] ;
 
 
 
@@ -42,7 +42,7 @@ export class AgregarComponent implements OnInit {
 
   constructor(private gelServicio: GelService,
               private activateRoute: ActivatedRoute,
-              private cargaImagenes: CargaImagenesService,
+              private cargaImagenesService: CargaImagenesService,
               private router: Router,
               private snackBar: MatSnackBar,
               private dialog: MatDialog  ) { }
@@ -74,11 +74,13 @@ export class AgregarComponent implements OnInit {
     if ( this.equipo.equipo.trim().length === 0 ||
          this.equipo.modelo.trim().length === 0 ||
          this.equipo.fechacompra.trim().length === 0 ||
-         this.equipo.lugarInstalacion.trim().length === 0 ){
+         this.equipo.lugarInstalacion.trim().length === 0 ||
+         this.archivos.length !== 1   ){
       // añadir un mesaje emergente para indicar que rellene todos los campos
       this.mostrarSnabar('Rellena todos los campos');
       return;   }
       // console.log( this.equipo);
+
 
     if ( this.equipo.id){
         // actualizamos valores
@@ -139,7 +141,8 @@ export class AgregarComponent implements OnInit {
 // funciones para controlar la carga de imagenes
 
   cargaArchivo():void {
-      this.cargaImagenes.cargarImagenBaseDatos( this.archivos );
+    console.log('subiendo imagen: ' , this.archivos);
+    this.cargaImagenesService.cargarImagenBaseDatos( this.archivos );
   }
 
   // tslint:disable-next-line:typedef
@@ -148,7 +151,8 @@ export class AgregarComponent implements OnInit {
 
   }
 
-  limpiarArchivo(): void {
+
+ limpiarArchivo(): void {
     this.archivos = [ ];
     console.log('Arraylist vacío: ' + this.archivos.length);
   }
